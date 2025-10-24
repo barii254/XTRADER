@@ -1,0 +1,154 @@
+<!--
+DollarPrinter-style Landing Page - Single-file HTML/CSS/JS prototype
+Includes: lightweight responsive layout, hero, features, pricing, sample signup form, and an "AI Builder Prompt" block you can copy-paste into an AI website builder (or use with ChatGPT / Copilots that generate websites).
+
+NOTE: This is an original implementation inspired by typical SaaS landing pages. Replace images / copy / links with your own.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DollarPrinter — Demo Clone Prototype</title>
+  <style>
+    :root{--accent:#0ea5a4;--muted:#6b7280;--bg:#0f172a}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;line-height:1.5;margin:0;background:linear-gradient(180deg,#020617, #07102b);color:#e6eef8}
+    .container{max-width:1100px;margin:0 auto;padding:32px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .logo{display:flex;gap:10px;align-items:center}
+    .logo .mark{width:44px;height:44px;border-radius:8px;background:linear-gradient(45deg,var(--accent),#7dd3fc);display:flex;align-items:center;justify-content:center;font-weight:700;color:#042027}
+    nav a{color:rgba(230,238,248,.9);text-decoration:none;margin-left:18px;font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;margin-top:28px}
+    .hero h1{font-size:36px;margin:0 0 12px}
+    .hero p{color:var(--muted);margin:0 0 20px}
+    .cta{display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:10px;font-weight:700;border:0;cursor:pointer}
+    .btn.primary{background:var(--accent);color:#012226}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.08);color:inherit}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border-radius:12px;padding:20px;box-shadow:0 6px 18px rgba(2,6,23,.6);}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+    .feature{padding:18px;border-radius:10px;background:rgba(255,255,255,0.02)}
+    .pricing{display:flex;gap:14px;margin-top:24px}
+    .price{flex:1;padding:18px;border-radius:12px;background:linear-gradient(180deg,#02182a, #041728);border:1px solid rgba(255,255,255,.03)}
+    footer{margin-top:48px;padding:28px 0;color:var(--muted)}
+    pre.prompt{white-space:pre-wrap;background:#00121a;padding:12px;border-radius:8px;color:#bfecee;overflow:auto}
+    @media (max-width:900px){.hero{grid-template-columns:1fr;}.features{grid-template-columns:1fr 1fr}.pricing{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="mark">DP</div>
+        <div>
+          <div style="font-weight:800">DollarPrinter</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Revenue tools for creators</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#signup">Get Started</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Turn visitors into recurring revenue — simple, fast, and transparent</h1>
+        <p>Set up optimized funnels, automated payouts, and conversion widgets without code. Built to help creators scale audience monetization.</p>
+        <div class="cta">
+          <button class="btn primary" onclick="alert('Demo signup — replace with real flow')">Start free trial</button>
+          <button class="btn ghost" onclick="document.getElementById('ai-prompt').scrollIntoView({behavior:'smooth'})">Generate with AI</button>
+        </div>
+
+        <div class="features" id="features">
+          <div class="feature card"><strong>Fast setup</strong><div style="color:var(--muted);margin-top:8px">Templates and one-click integrations.</div></div>
+          <div class="feature card"><strong>Payouts</strong><div style="color:var(--muted);margin-top:8px">Automated agent payouts and revenue split tools.</div></div>
+          <div class="feature card"><strong>Analytics</strong><div style="color:var(--muted);margin-top:8px">Conversion tracking and revenue reports.</div></div>
+        </div>
+
+      </div>
+
+      <aside class="card">
+        <div style="font-weight:800;font-size:18px;margin-bottom:8px">Live demo panel</div>
+        <div style="color:var(--muted);font-size:13px">Preview of dashboard metrics</div>
+        <div style="display:flex;justify-content:space-between;margin-top:18px">
+          <div>
+            <div style="font-size:22px;font-weight:800">$1,248</div>
+            <div style="color:var(--muted);font-size:12px">Revenue (30d)</div>
+          </div>
+          <div>
+            <div style="font-size:22px;font-weight:800">1,248</div>
+            <div style="color:var(--muted);font-size:12px">Customers</div>
+          </div>
+        </div>
+        <div style="margin-top:16px">
+          <label style="display:block;font-size:13px;margin-bottom:6px;color:var(--muted)">Join the waitlist</label>
+          <div style="display:flex;gap:8px">
+            <input id="email" placeholder="you@domain.com" style="flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,.05);background:transparent;color:inherit" />
+            <button class="btn primary" onclick="alert('Thanks! demo only')">Join</button>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section style="margin-top:32px">
+      <div style="font-weight:800;font-size:18px">Pricing</div>
+      <div class="pricing" id="pricing">
+        <div class="price card">
+          <div style="font-weight:800">Starter</div>
+          <div style="color:var(--muted);margin-top:6px">Free • 7-day trial</div>
+          <div style="margin-top:12px">Basic widgets, 100 visits/mo, community support</div>
+          <div style="margin-top:12px;font-weight:800">$0</div>
+        </div>
+        <div class="price card">
+          <div style="font-weight:800">Pro</div>
+          <div style="color:var(--muted);margin-top:6px">For growing creators</div>
+          <div style="margin-top:12px">Unlimited funnels, payouts, analytics exports</div>
+          <div style="margin-top:12px;font-weight:800">$29/mo</div>
+        </div>
+        <div class="price card">
+          <div style="font-weight:800">Enterprise</div>
+          <div style="color:var(--muted);margin-top:6px">Custom integrations & SLAs</div>
+          <div style="margin-top:12px">White-label and high-volume support</div>
+          <div style="margin-top:12px;font-weight:800">Contact us</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top:32px">
+      <div style="font-weight:800;font-size:18px">AI Builder Prompt</div>
+      <p style="color:var(--muted)">Copy the prompt below and paste into ChatGPT, an AI website builder, or an "AI to code" tool to generate a production-ready clone. Edit brand names, colors, and legal text before publishing.</p>
+      <pre class="prompt" id="ai-prompt">Generate a modern, responsive single-page SaaS landing page called "DollarPrinter" with the following features:
+
+1) Hero section with name, short subheading, and two CTAs (Primary: start free trial — secondary: generate with AI)
+2) Live metrics card showing revenue and customers
+3) Three feature cards (Fast setup, Payouts, Analytics) with icons
+4) Pricing section with Starter/Pro/Enterprise tiers
+5) Join-waitlist email form with basic client-side validation
+6) Responsive layout for mobile and desktop and light/dark color variables
+7) Clean, semantic HTML; separate CSS and small vanilla JS for interactivity (no frameworks)
+8) Include placeholder images and comments where to replace with real assets
+
+Also produce a short, friendly marketing copy (headline, 2-sentence subheading) and a 60-word SEO meta description. Output the full HTML/CSS/JS files and a short README with instructions to deploy on Netlify or Vercel. 
+
+Make it original but stylistically similar to modern SaaS landing pages. Don't copy protected text from other websites. Provide accessible markup (ARIA as needed) and minimal performance optimizations.
+</pre>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <strong>DollarPrinter</strong> — demo prototype</div>
+        <div style="color:var(--muted);font-size:13px">Made for demo purposes. Replace logos, pricing, and legal before launch.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Small client-side validation for demo
+    document.getElementById('email').addEventListener('keypress',function(e){ if(e.key==='Enter'){ e.preventDefault(); alert('Demo signup — replace with your backend'); }});
+  </script>
+</body>
+</html>
